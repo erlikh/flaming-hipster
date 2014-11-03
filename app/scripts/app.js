@@ -32,29 +32,25 @@ angular
       .state('feeds.show', {
         url: '/:feedId',
         templateUrl: 'views/feeds/show.html',
-        controller: function($scope, $stateParams) {
-          $scope.feed = _.find($scope.feeds, {id: +$stateParams.feedId});
-        }
+        controller: 'FeedsShowCtrl'
       })
 
-      .state('feeds.show.post', {
+      .state('feeds.show.posts', {
         url: '/posts/:postId',
-        templateUrl: 'views/posts/show.html',
-        controller: function($scope, $state, $stateParams) {
-          $scope.$watch('feed.posts', function() {
-            $scope.post = _.find($scope.feed.posts, {id: +$stateParams.postId});
-          });
-        }
+        abstract: true,
+        template: '<ui-view/>',
+        controller: 'PostsCtrl'
       })
 
-      .state('feeds.show.post.edit', {
+      .state('feeds.show.posts.show', {
+        url: '/',
+        templateUrl: 'views/posts/show.html'
+      })
+
+      .state('feeds.show.posts.edit', {
         url: '/edit',
         templateUrl: 'views/posts/edit.html',
-        controller: function($scope, $state, $stateParams) {
-          $scope.$watch('feed.posts', function() {
-            $scope.post = _.find($scope.feed.posts, {id: +$stateParams.postId});
-          });
-        }
+        controller: 'PostsEditCtrl'
       })
   })
 ;
