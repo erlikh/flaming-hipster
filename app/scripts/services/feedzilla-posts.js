@@ -9,9 +9,8 @@
  */
 angular.module('flamingHipsterApp')
   .factory('feedzillaPosts', function(Restangular) {
-
     return {
-      load: function(){
+      load: function() {
         var posts = Restangular
             .withConfig(function(RestangularConfigurer) {
               RestangularConfigurer.setBaseUrl('http://api.feedzilla.com/v1/categories/25/');
