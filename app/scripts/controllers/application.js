@@ -27,7 +27,7 @@ angular.module('flamingHipsterApp')
     ];
 
     $scope.providerTemplate = function(slug, action) {
-      return 'views/posts/providers/' + slug + '/' + action + '.html';
+      return '/views/posts/providers/' + slug + '/' + action + '.html';
     };
 
     angular.forEach($scope.feeds, function(feed) {

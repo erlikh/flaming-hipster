@@ -1,6 +1,7 @@
-{{post.title}}
-<p>
-  <a type="button" class="btn btn-primary" ui-sref="feeds.show.post.edit">Edit</a>
-</p>
+<h1>{{post.title}}</h1>
 
-<ui-view/>
+<p>{{post.body}}</p>
+
+<p>
+  <a type="button" class="btn btn-primary" ui-sref="feeds.show.posts.edit({feedId: feed.id, postId: post.id})">Edit</a>
+</p>

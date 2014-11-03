@@ -1,1 +1,18 @@
-Edit
+<form role="form">
+  <div class="form-group">
+    <label for="postTitle">Title</label>
+    <input type="text" class="form-control" id="postTitle" placeholder="Enter title" ng-model="post.title">
+  </div>
+
+  <div class="form-group">
+    <label for="postDesc">Description</label>
+    <textarea class="form-control" id="postDesc" rows="10" placeholder="Description" ng-model="post.summary"></textarea>
+  </div>
+
+  <div class="form-group">
+    <div class="pull-right">
+      <button type="submit" class="btn btn-default" ng-click="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
+    </div>
+  </div>
+</form>
