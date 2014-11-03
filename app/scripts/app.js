@@ -39,7 +39,17 @@ angular
 
       .state('feeds.show.post', {
         url: '/posts/:postId',
-        templateUrl: 'views/feeds/post-details.html',
+        templateUrl: 'views/posts/show.html',
+        controller: function($scope, $state, $stateParams) {
+          $scope.$watch('feed.posts', function() {
+            $scope.post = _.find($scope.feed.posts, {id: +$stateParams.postId});
+          });
+        }
+      })
+
+      .state('feeds.show.post.edit', {
+        url: '/edit',
+        templateUrl: 'views/posts/edit.html',
         controller: function($scope, $state, $stateParams) {
           $scope.$watch('feed.posts', function() {
             $scope.post = _.find($scope.feed.posts, {id: +$stateParams.postId});
