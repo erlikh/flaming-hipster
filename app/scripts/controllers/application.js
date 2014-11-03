@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name flamingHipsterApp.controller:MainCtrl
+ * @name flamingHipsterApp.controller:ApplicationCtrl
  * @description
- * # MainCtrl
+ * # ApplicationCtrl
  * Controller of the flamingHipsterApp
  */
 angular.module('flamingHipsterApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('ApplicationCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
