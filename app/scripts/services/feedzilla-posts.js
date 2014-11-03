@@ -26,6 +26,13 @@ angular.module('flamingHipsterApp')
             })
             .all('articles')
             .getList()
+            .then(function(posts) {
+              angular.forEach(posts, function(post){
+                post.id = +post.url.match(/fun-stuff\/([^?]*)?/)[1];
+              });
+
+              return posts;
+            })
           ;
 
         return posts;

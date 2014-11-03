@@ -26,26 +26,24 @@ angular
       .state('feeds', {
         url: '/feeds',
         abstract: true,
-        templateUrl: 'views/feeds/layout.html'
+        template: '<ui-view/>'
       })
 
       .state('feeds.show', {
         url: '/:feedId',
         templateUrl: 'views/feeds/show.html',
-        controller: function($scope, $state, railsIssues, feedzillaPosts) {
-          railsIssues.load().then(function(posts) {
-            console.log('posts: ', posts);
-          });
-
-          feedzillaPosts.load().then(function(posts) {
-            console.log('fz posts: ', posts);
-          });
+        controller: function($scope, $stateParams) {
+          $scope.feed = _.find($scope.feeds, {id: +$stateParams.feedId});
         }
       })
 
       .state('feeds.show.post', {
         url: '/posts/:postId',
-        templateUrl: 'views/feeds/post-details.html'
+        templateUrl: 'views/feeds/post-details.html',
+        controller: function($scope, $state, $stateParams) {
+          console.log('$scope.feed.posts: ', $scope.feed.posts);
+          $scope.post = _.find($scope.feed.posts, {id: +$stateParams.postId});
+        }
       })
   })
 ;
