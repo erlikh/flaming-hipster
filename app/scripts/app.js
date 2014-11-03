@@ -10,7 +10,8 @@
  */
 angular
   .module('flamingHipsterApp', [
-    'ui.router'
+    'ui.router',
+    'restangular'
   ])
 
   .config(function($stateProvider, $urlRouterProvider) {
@@ -31,6 +32,15 @@ angular
       .state('feeds.show', {
         url: '/:feedId',
         templateUrl: 'views/feeds/show.html',
+        controller: function($scope, $state, railsIssues, feedzillaPosts) {
+          railsIssues.load().then(function(posts) {
+            console.log('posts: ', posts);
+          });
+
+          feedzillaPosts.load().then(function(posts) {
+            console.log('fz posts: ', posts);
+          });
+        }
       })
 
       .state('feeds.show.post', {
