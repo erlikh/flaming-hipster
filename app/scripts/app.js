@@ -41,8 +41,9 @@ angular
         url: '/posts/:postId',
         templateUrl: 'views/feeds/post-details.html',
         controller: function($scope, $state, $stateParams) {
-          console.log('$scope.feed.posts: ', $scope.feed.posts);
-          $scope.post = _.find($scope.feed.posts, {id: +$stateParams.postId});
+          $scope.$watch('feed.posts', function() {
+            $scope.post = _.find($scope.feed.posts, {id: +$stateParams.postId});
+          });
         }
       })
   })
