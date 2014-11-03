@@ -14,17 +14,21 @@ angular.module('flamingHipsterApp')
         id: 0,
         title: 'Github',
         description: 'Rails Issues',
-        loader: railsIssues,
-        postTemplate: 'views/feeds/providers/_github.html'
+        slug: 'github',
+        loader: railsIssues
       },
       {
         id: 1,
         title: 'Feedzilla',
         description: 'Top News',
-        loader: feedzillaPosts,
-        postTemplate: 'views/feeds/providers/_feedzilla.html'
+        slug: 'feedzilla',
+        loader: feedzillaPosts
       }
     ];
+
+    $scope.providerTemplate = function(slug, action) {
+      return 'views/posts/providers/' + slug + '/' + action + '.html';
+    };
 
     angular.forEach($scope.feeds, function(feed) {
       feed.loader.load().then(function(data) {
